@@ -1,0 +1,150 @@
+.ecosystem {
+  padding: 96px 0;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.scene {
+  margin-top: 56px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 24px;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.scene-person {
+  position: relative;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scene-person img {
+  width: 100%;
+  filter: drop-shadow(0 22px 30px rgba(36, 21, 17, 0.16));
+}
+
+.scene-person img.mirrored {
+  transform: scaleX(-1);
+}
+
+.scene-name {
+  margin-top: 10px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+}
+
+.bubble {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px 18px;
+  font-size: 0.9rem;
+  color: var(--ink);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 14px;
+  max-width: 230px;
+}
+
+.bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  width: 16px;
+  height: 16px;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transform: rotate(45deg);
+}
+
+.bubble-left {
+  align-self: flex-start;
+}
+.bubble-left::after {
+  left: 40px;
+}
+
+.bubble-right {
+  align-self: flex-end;
+  background: var(--olive-tint);
+  border-color: var(--olive);
+}
+.bubble-right::after {
+  right: 40px;
+  background: var(--olive-tint);
+  border-color: var(--olive);
+}
+
+.role-flow {
+  margin-top: 72px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.role-item {
+  background: var(--surface);
+  padding: 26px 22px;
+}
+
+.role-num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--ink-faint);
+}
+
+.role-tag {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--coral-deep);
+  margin-top: 10px;
+}
+
+.role-name {
+  font-family: var(--display);
+  font-size: 1.02rem;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+.role-item p {
+  font-size: 0.84rem;
+  margin-top: 8px;
+}
+
+@media (max-width: 860px) {
+  .scene {
+    gap: 10px;
+  }
+  .scene-person {
+    width: 42%;
+  }
+  .bubble {
+    font-size: 0.78rem;
+    padding: 10px 12px;
+    max-width: none;
+  }
+  .role-flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .role-flow {
+    grid-template-columns: 1fr;
+  }
+}

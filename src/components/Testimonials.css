@@ -1,0 +1,106 @@
+.testimonials {
+  padding: 96px 0;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.t-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 20px;
+  margin-top: 52px;
+}
+
+.t-feature {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 42px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-card);
+}
+
+.t-feature blockquote {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 1.36rem;
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.t-attr {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.t-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--coral), var(--gold));
+  color: #fff8f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.t-avatar.small {
+  width: 32px;
+  height: 32px;
+  font-size: 0.68rem;
+  background: linear-gradient(135deg, var(--olive), var(--olive-deep));
+}
+
+.t-name {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.t-name.small {
+  font-size: 0.84rem;
+}
+
+.t-role {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+
+.t-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.t-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  background: var(--surface);
+}
+
+.t-card p {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.t-card .t-attr {
+  margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .t-grid {
+    grid-template-columns: 1fr;
+  }
+}

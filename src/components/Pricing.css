@@ -1,0 +1,128 @@
+.pricing {
+  padding: 96px 0 108px;
+}
+
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 52px;
+}
+
+.price-card {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 32px 28px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.price-card.highlight {
+  border-color: var(--coral);
+  box-shadow: 0 0 0 1px var(--coral), 0 26px 60px -28px rgba(224, 79, 59, 0.4);
+}
+
+.price-badge {
+  position: absolute;
+  top: -12px;
+  left: 26px;
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--coral);
+  color: #fff8f5;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.price-plan {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.price-audience {
+  margin-top: 8px;
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.price-amount {
+  font-family: var(--display);
+  font-size: 1.9rem;
+  font-weight: 600;
+  margin-top: 22px;
+  color: var(--ink);
+}
+
+.price-amount span {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  font-family: var(--sans);
+  font-weight: 500;
+}
+
+.price-sub {
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  margin-top: 4px;
+}
+
+.price-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.price-list li {
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  padding-left: 18px;
+  position: relative;
+}
+
+.price-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 8px;
+  height: 1.5px;
+  background: var(--coral);
+}
+
+.price-cta {
+  margin-top: 26px;
+  text-align: center;
+  padding: 12px;
+  border-radius: 100px;
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+}
+
+.price-card.highlight .price-cta {
+  background: var(--coral);
+  color: #fff8f5;
+  border-color: var(--coral);
+}
+
+@media (max-width: 900px) {
+  .price-grid {
+    grid-template-columns: 1fr;
+  }
+}
