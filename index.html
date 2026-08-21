@@ -1,0 +1,773 @@
+<title>IdeationX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#f5f6f8;
+    --bg-raised:#ffffff;
+    --surface:#eef0f4;
+    --border:#dcdfe6;
+    --text:#0b0f17;
+    --text-dim:#4b5567;
+    --text-faint:#7c8598;
+    --cyan:#0891a8;
+    --violet:#5b21d6;
+    --cyan-glow:rgba(0,224,255,.35);
+    --violet-glow:rgba(112,0,255,.3);
+    --mono:'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+    --sans:'Inter', -apple-system, 'Segoe UI', sans-serif;
+    --radius:14px;
+  }
+  :root:not([data-theme="light"]){
+    @media (prefers-color-scheme: dark){
+      --bg:#0b0f17;
+      --bg-raised:#0f141e;
+      --surface:#121826;
+      --border:#232b3c;
+      --text:#f5f7fa;
+      --text-dim:#94a3b8;
+      --text-faint:#5c6780;
+      --cyan:#00e0ff;
+      --violet:#7a3bff;
+      --cyan-glow:rgba(0,224,255,.35);
+      --violet-glow:rgba(122,59,255,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0b0f17;
+    --bg-raised:#0f141e;
+    --surface:#121826;
+    --border:#232b3c;
+    --text:#f5f7fa;
+    --text-dim:#94a3b8;
+    --text-faint:#5c6780;
+    --cyan:#00e0ff;
+    --violet:#7a3bff;
+    --cyan-glow:rgba(0,224,255,.35);
+    --violet-glow:rgba(122,59,255,.35);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:var(--mono);
+    font-weight:600;
+    letter-spacing:-0.02em;
+    text-wrap:balance;
+    margin:0;
+  }
+  p{color:var(--text-dim); line-height:1.7; margin:0;}
+  a{color:inherit;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  section{position:relative;}
+  ::selection{background:var(--cyan-glow); color:var(--text);}
+  :focus-visible{outline:2px solid var(--cyan); outline-offset:3px; border-radius:4px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--cyan);
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"";width:18px;height:1px;background:var(--cyan);}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    backdrop-filter:blur(16px);
+    background:color-mix(in srgb, var(--bg) 72%, transparent);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:1180px; margin:0 auto; padding:16px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{
+    font-family:var(--mono); font-weight:700; font-size:1.05rem;
+    display:flex; align-items:center; gap:8px; letter-spacing:-.01em;
+  }
+  .brand .dot{width:8px;height:8px;border-radius:2px;background:linear-gradient(135deg,var(--cyan),var(--violet)); display:inline-block;}
+  .nav-links{display:flex; gap:36px; font-size:.88rem; color:var(--text-dim);}
+  .nav-links a{text-decoration:none; transition:color .2s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{
+    font-family:var(--mono); font-size:.78rem; font-weight:600;
+    padding:9px 18px; border-radius:8px;
+    background:var(--text); color:var(--bg);
+    text-decoration:none;
+  }
+  @media (max-width:820px){ .nav-links{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:172px 0 120px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:-20% -10% auto -10%; height:900px;
+    background:
+      radial-gradient(560px 340px at 18% 20%, var(--cyan-glow), transparent 70%),
+      radial-gradient(620px 380px at 82% 10%, var(--violet-glow), transparent 70%);
+    opacity:.5; filter:blur(10px);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative; z-index:1; text-align:center; max-width:880px; margin:0 auto;}
+  .hero h1{
+    font-size:clamp(2.4rem, 5.4vw, 4.4rem);
+    line-height:1.06;
+    background:linear-gradient(180deg, var(--text) 60%, var(--text-dim));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero-sub{
+    margin:26px auto 0; max-width:620px;
+    font-size:1.14rem; color:var(--text-dim);
+  }
+  .hero-cta{display:flex; gap:14px; justify-content:center; margin-top:40px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono); font-size:.85rem; font-weight:600;
+    padding:14px 26px; border-radius:10px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--cyan), var(--violet));
+    color:#050810;
+    box-shadow:0 8px 30px -6px var(--cyan-glow);
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 14px 36px -6px var(--cyan-glow);}
+  .btn-ghost{
+    border:1px solid var(--border); color:var(--text);
+    background:var(--bg-raised);
+  }
+  .btn-ghost:hover{transform:translateY(-2px); border-color:var(--text-faint);}
+
+  .proof-bar{
+    margin-top:64px; padding:20px 28px;
+    border:1px solid var(--border); border-radius:16px;
+    background:var(--bg-raised);
+    display:flex; gap:28px; align-items:center; justify-content:center;
+    flex-wrap:wrap;
+    font-family:var(--mono); font-size:.78rem; color:var(--text-faint);
+  }
+  .proof-bar strong{color:var(--text); font-weight:600;}
+  .proof-sep{width:1px; height:16px; background:var(--border);}
+
+  /* ---------- TERMINAL VISUALIZER ---------- */
+  .terminal-section{padding:100px 0;}
+  .section-head{text-align:center; max-width:680px; margin:0 auto 56px;}
+  .section-head h2{font-size:clamp(1.7rem,3vw,2.4rem); margin-top:16px;}
+  .section-head p{margin-top:16px; font-size:1.02rem;}
+
+  .term{
+    border:1px solid var(--border); border-radius:16px; overflow:hidden;
+    background:var(--bg-raised);
+    box-shadow:0 30px 80px -30px rgba(0,0,0,.5);
+  }
+  .term-bar{
+    display:flex; align-items:center; gap:20px;
+    padding:0; border-bottom:1px solid var(--border);
+    background:var(--surface);
+  }
+  .term-dots{display:flex; gap:7px; padding:14px 18px;}
+  .term-dots span{width:10px;height:10px;border-radius:50%; background:var(--border);}
+  .tabs{display:flex;}
+  .tab{
+    font-family:var(--mono); font-size:.78rem; color:var(--text-faint);
+    padding:15px 18px; cursor:pointer; border-bottom:2px solid transparent;
+    background:none; border-top:none; border-left:none; border-right:none;
+    transition:color .2s;
+  }
+  .tab.active{color:var(--cyan); border-bottom-color:var(--cyan);}
+  .tab:hover{color:var(--text);}
+  .term-body{padding:28px 30px; font-family:var(--mono); font-size:.86rem; min-height:270px; line-height:1.9;}
+  .term-pane{display:none;}
+  .term-pane.active{display:block; animation:fade .4s ease;}
+  @keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+  .term-line{color:var(--text-dim);}
+  .term-line .k{color:var(--violet);}
+  .term-line .v{color:var(--cyan);}
+  .term-line .ok{color:#3ddc84;}
+  .term-line .warn{color:#ffb84d;}
+  .term-line .muted{color:var(--text-faint);}
+  .chat-line{display:flex; gap:10px; margin-bottom:12px; align-items:baseline;}
+  .chat-handle{flex-shrink:0; font-weight:600;}
+  .chat-handle.h1{color:var(--cyan);}
+  .chat-handle.h2{color:var(--violet);}
+  .chat-msg{color:var(--text-dim);}
+  .chat-sys{color:var(--text-faint); font-style:italic; margin-bottom:12px; padding-left:2px;}
+  .chat-sys.warn{color:#ffb84d;}
+  .chat-sys::before{content:"["; }
+  .chat-sys::after{content:"]"; }
+  .caret{display:inline-block; width:7px; height:14px; background:var(--cyan); vertical-align:middle; animation:blink 1s step-end infinite;}
+  @keyframes blink{50%{opacity:0;}}
+
+  .score-row{display:flex; align-items:center; gap:14px; margin-bottom:10px;}
+  .score-label{width:190px; color:var(--text-dim); font-size:.8rem;}
+  .score-track{flex:1; height:7px; border-radius:4px; background:var(--surface); overflow:hidden;}
+  .score-fill{height:100%; border-radius:4px; background:linear-gradient(90deg,var(--cyan),var(--violet));}
+  .score-val{width:38px; text-align:right; color:var(--text); font-size:.8rem;}
+
+  /* ---------- FEATURE GRID ---------- */
+  .features{padding:100px 0; background:var(--bg-raised); border-top:1px solid var(--border); border-bottom:1px solid var(--border);}
+  .feature-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:16px; overflow:hidden; margin-top:56px;}
+  .feature-card{background:var(--bg-raised); padding:38px 34px;}
+  .feature-num{font-family:var(--mono); font-size:.75rem; color:var(--text-faint); letter-spacing:.1em;}
+  .feature-card h3{font-size:1.24rem; margin-top:18px;}
+  .feature-card p{margin-top:12px; font-size:.95rem;}
+  .feature-icon{
+    width:38px; height:38px; border-radius:9px; margin-bottom:8px;
+    background:var(--surface); border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center;
+  }
+  @media (max-width:760px){ .feature-grid{grid-template-columns:1fr;} }
+
+  /* ---------- ROI MATRIX ---------- */
+  .problem{padding:100px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--bg-raised);}
+  .problem-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px; margin-top:56px;}
+  .problem-card{border:1px solid var(--border); border-radius:16px; padding:32px 28px; background:var(--bg);}
+  .problem-mark{font-family:var(--mono); font-size:1.6rem; color:var(--violet); line-height:1;}
+  .problem-card h3{font-size:1.1rem; margin-top:16px;}
+  .problem-card p{margin-top:12px; font-size:.92rem;}
+  @media (max-width:960px){ .problem-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .problem-grid{grid-template-columns:1fr;} }
+
+  .roles{padding:100px 0;}
+  .role-flow{display:flex; gap:0; margin-top:60px; align-items:stretch;}
+  .role-card{
+    flex:1; min-width:0;
+    border:1px solid var(--border); border-radius:16px; padding:30px 24px;
+    background:var(--bg-raised);
+  }
+  .role-card .role-tag{font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--cyan);}
+  .role-card h3{font-size:1.08rem; margin-top:14px;}
+  .role-card p{font-size:.87rem; margin-top:10px;}
+  .role-arrow{
+    flex-shrink:0; width:44px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); color:var(--text-faint); font-size:1.1rem;
+  }
+  @media (max-width:900px){
+    .role-flow{flex-direction:column; gap:0;}
+    .role-arrow{width:auto; height:32px; transform:rotate(90deg);}
+  }
+
+  .roi{padding:100px 0;}
+  .roi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:56px;}
+  .roi-card{
+    border:1px solid var(--border); border-radius:16px; padding:32px 28px;
+    background:var(--bg-raised);
+  }
+  .roi-tag{
+    font-family:var(--mono); font-size:.7rem; letter-spacing:.08em;
+    color:var(--violet); text-transform:uppercase;
+  }
+  .roi-stat{font-family:var(--mono); font-size:2.1rem; font-weight:700; margin-top:16px; color:var(--text);}
+  .roi-card h4{font-size:1.02rem; margin-top:6px; font-weight:600;}
+  .roi-card p{margin-top:10px; font-size:.9rem;}
+  @media (max-width:860px){ .roi-grid{grid-template-columns:1fr;} }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{padding:100px 0; background:var(--bg-raised); border-top:1px solid var(--border); border-bottom:1px solid var(--border);}
+  .t-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:24px; margin-top:56px;}
+  .t-feature{
+    border:1px solid var(--border); border-radius:18px; padding:44px;
+    background:linear-gradient(155deg, var(--surface), var(--bg-raised));
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .t-feature blockquote{
+    margin:0; font-family:var(--mono); font-size:1.28rem; line-height:1.55;
+    color:var(--text); font-weight:500;
+  }
+  .t-feature blockquote::before{content:"“"; color:var(--cyan);}
+  .t-feature blockquote::after{content:"”"; color:var(--cyan);}
+  .t-attr{margin-top:32px; display:flex; align-items:center; gap:12px;}
+  .t-avatar{width:40px;height:40px;border-radius:50%; background:linear-gradient(135deg,var(--cyan),var(--violet)); flex-shrink:0;}
+  .t-name{font-weight:600; font-size:.92rem; color:var(--text);}
+  .t-role{font-size:.8rem; color:var(--text-faint);}
+  .t-side{display:flex; flex-direction:column; gap:24px;}
+  .t-card{border:1px solid var(--border); border-radius:14px; padding:26px; background:var(--bg-raised);}
+  .t-card p{font-size:.92rem; color:var(--text-dim); font-style:italic;}
+  .t-card .t-attr{margin-top:18px;}
+  .t-avatar.small{width:30px;height:30px;}
+  @media (max-width:900px){ .t-grid{grid-template-columns:1fr;} }
+
+  /* ---------- CLIENTS ---------- */
+  .clients{padding:70px 0;}
+  .clients .section-head{margin-bottom:40px;}
+  .client-strip{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--border); border:1px solid var(--border); border-radius:14px; overflow:hidden;
+  }
+  .client-cell{
+    background:var(--bg-raised); padding:26px 18px;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-family:var(--mono); font-size:.78rem; color:var(--text-faint); letter-spacing:.03em;
+    min-height:88px;
+  }
+  @media (max-width:760px){ .client-strip{grid-template-columns:repeat(2,1fr);} }
+
+  /* ---------- PRICING ---------- */
+  .pricing{padding:100px 0;}
+  .toggle-row{display:flex; justify-content:center; margin:44px 0 8px;}
+  .toggle{
+    display:inline-flex; padding:4px; border-radius:10px;
+    background:var(--surface); border:1px solid var(--border);
+    font-family:var(--mono); font-size:.8rem;
+  }
+  .toggle button{
+    padding:9px 20px; border-radius:7px; border:none; background:none;
+    color:var(--text-faint); cursor:pointer; transition:.2s;
+  }
+  .toggle button.active{background:var(--bg-raised); color:var(--text); box-shadow:0 2px 8px rgba(0,0,0,.15);}
+  .price-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:48px;}
+  .price-card{
+    border:1px solid var(--border); border-radius:18px; padding:34px 28px;
+    background:var(--bg-raised); display:flex; flex-direction:column;
+  }
+  .price-card.highlight{
+    border-color:var(--cyan);
+    box-shadow:0 0 0 1px var(--cyan), 0 24px 60px -24px var(--cyan-glow);
+    position:relative;
+  }
+  .price-card.highlight::before{
+    content:"MOST DEPLOYED"; position:absolute; top:-11px; left:28px;
+    font-family:var(--mono); font-size:.65rem; letter-spacing:.1em;
+    background:var(--cyan); color:#04121a; padding:4px 10px; border-radius:5px; font-weight:700;
+  }
+  .price-plan{font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-faint);}
+  .price-audience{margin-top:8px; font-size:.95rem; color:var(--text); font-weight:600;}
+  .price-amount{font-family:var(--mono); font-size:1.9rem; font-weight:700; margin-top:22px; color:var(--text);}
+  .price-amount span{font-size:.85rem; color:var(--text-faint); font-weight:500;}
+  .price-sub{font-size:.8rem; color:var(--text-faint); margin-top:4px;}
+  .price-list{list-style:none; padding:0; margin:26px 0 0; display:flex; flex-direction:column; gap:12px; flex:1;}
+  .price-list li{font-size:.87rem; color:var(--text-dim); display:flex; gap:10px; align-items:flex-start;}
+  .price-list li::before{content:"—"; color:var(--cyan); flex-shrink:0;}
+  .price-cta{
+    margin-top:28px; text-align:center; padding:12px; border-radius:9px;
+    font-family:var(--mono); font-size:.82rem; font-weight:600; text-decoration:none;
+    border:1px solid var(--border); color:var(--text);
+  }
+  .price-card.highlight .price-cta{background:var(--cyan); color:#04121a; border-color:var(--cyan);}
+  @media (max-width:900px){ .price-grid{grid-template-columns:1fr;} }
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:70px 0 44px; border-top:1px solid var(--border);}
+  .badges{display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin-bottom:56px;}
+  .badge{
+    font-family:var(--mono); font-size:.74rem; color:var(--text-dim);
+    border:1px solid var(--border); border-radius:999px; padding:9px 18px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .badge::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--cyan);}
+  .footer-grid{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:32px;}
+  .footer-cols{display:flex; gap:64px; flex-wrap:wrap;}
+  .footer-col h5{font-family:var(--mono); font-size:.75rem; color:var(--text-faint); letter-spacing:.08em; text-transform:uppercase; margin-bottom:14px; font-weight:600;}
+  .footer-col a{display:block; font-size:.88rem; color:var(--text-dim); text-decoration:none; margin-bottom:10px;}
+  .footer-col a:hover{color:var(--text);}
+  .footer-bottom{margin-top:56px; padding-top:24px; border-top:1px solid var(--border); display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:.8rem; color:var(--text-faint);}
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand"><span class="dot"></span>IdeationX</div>
+    <div class="nav-links">
+      <a href="#problem">Why IdeationX</a>
+      <a href="#roles">Ecosystem</a>
+      <a href="#signal">Platform</a>
+      <a href="#features">Capabilities</a>
+      <a href="#roi">For Institutions</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <a class="nav-cta" href="#pricing">Request Demo</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="eyebrow" style="justify-content:center;">Venture Validation Infrastructure</div>
+    <h1>Stop evaluating slide decks.<br>Start auditing real innovation.</h1>
+    <p class="hero-sub">IdeationX is the AI-driven validation and mentorship engine for hackathons, indie ventures, and solo builders alike — giving organizers, mentors, and institutions an honest, real-time read on what people are actually building.</p>
+    <div class="hero-cta">
+      <a href="#pricing" class="btn btn-primary">Request Institutional Demo →</a>
+      <a href="#signal" class="btn btn-ghost">Explore Live Sandboxes</a>
+    </div>
+    <div class="proof-bar">
+      <span>Used across <strong>hackathons, incubators &amp; solo ventures</strong></span>
+      <span class="proof-sep"></span>
+      <span>Benchmarked against <strong>1,700+ startup failure patterns</strong></span>
+      <span class="proof-sep"></span>
+      <span>Mapped to <strong>8,000+ prior innovation submissions</strong></span>
+    </div>
+  </div>
+</section>
+
+<section class="problem" id="problem">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="justify-content:center;">Why We Built This</div>
+      <h2>Validating an idea broke a long time ago.</h2>
+      <p>Whether it's a 36-hour hackathon, a college venture cell, or one person building alone at night, the same four cracks show up everywhere. IdeationX exists to close them.</p>
+    </div>
+    <div class="problem-grid reveal">
+      <div class="problem-card">
+        <div class="problem-mark">01</div>
+        <h3>Everyone builds the same idea</h3>
+        <p>Ask any AI tool for a starting point and hundreds of teams — and just as many solo builders — land on the same generic app. Real problems on the ground go untouched.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-mark">02</div>
+        <h3>Demos lie, and evaluators can't tell</h3>
+        <p>Fake loading screens, buttons that go nowhere, hardcoded data dressed up as "live" — a good pitch in a few minutes can hide a project that barely works, from a hackathon stage to an investor call.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-mark">03</div>
+        <h3>No one is watching in between</h3>
+        <p>The real decisions — what to build, what to cut, what to fix — happen at 2 AM with no mentor in the room, and no record of it for the people who have to evaluate it later.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-mark">04</div>
+        <h3>Building alone means no second opinion</h3>
+        <p>Independent innovators don't have a co-founder to argue with or a mentor on call. Bad assumptions compound for weeks before anyone points them out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="roles" id="roles">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="justify-content:center;">The Ecosystem</div>
+      <h2>One platform, four people looking at the same truth.</h2>
+      <p>Whoever you are in the process, IdeationX gives you the same honest signal — just shaped for what you need to decide.</p>
+    </div>
+    <div class="role-flow reveal">
+      <div class="role-card">
+        <div class="role-tag">Builder</div>
+        <h3>The team or solo innovator</h3>
+        <p>Gets a 24/7 copilot that flags bad assumptions early and keeps the build honest, whether it's a 36-hour sprint or a six-month solo venture.</p>
+      </div>
+      <div class="role-arrow">→</div>
+      <div class="role-card">
+        <div class="role-tag">Mentor</div>
+        <h3>Vidur, the AI copilot</h3>
+        <p>Watches the process in real time, matches decisions against thousands of past failures, and nudges builders before mistakes get expensive.</p>
+      </div>
+      <div class="role-arrow">→</div>
+      <div class="role-card">
+        <div class="role-tag">Organizer / Judge</div>
+        <h3>Whoever has to evaluate the work</h3>
+        <p>Gets a scorecard built from what teams actually shipped, not just what they presented — so judging takes minutes, not a re-read of every repo.</p>
+      </div>
+      <div class="role-arrow">→</div>
+      <div class="role-card">
+        <div class="role-tag">Institution</div>
+        <h3>The university or program behind it all</h3>
+        <p>Gets an auditable record of the whole cohort's progress — useful for accreditation, and for knowing which ventures are actually worth continuing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="terminal-section" id="signal">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="justify-content:center;">How It Works</div>
+      <h2>What they say. How they work. What they actually build.</h2>
+      <p>IdeationX watches all three — so judges see the real picture, not just a good pitch.</p>
+    </div>
+
+    <div class="term reveal">
+      <div class="term-bar">
+        <div class="term-dots"><span></span><span></span><span></span></div>
+        <div class="tabs">
+          <button class="tab active" data-tab="process">While they work</button>
+          <button class="tab" data-tab="code">What they built</button>
+          <button class="tab" data-tab="score">The scorecard</button>
+        </div>
+      </div>
+      <div class="term-body">
+        <div class="term-pane active" data-pane="process">
+          <div class="chat-sys">Vidur is following Team Ganotri's build channel</div>
+          <div class="chat-line"><span class="chat-handle h2">@jahnavi</span><span class="chat-msg">thinking we charge per seat for the college version, keeps it simple for us to build</span></div>
+          <div class="chat-line"><span class="chat-handle h1">@vidur</span><span class="chat-msg">heads up — this exact pricing shape has sunk a few campus tools before. closed-loop credits with no real payout path is usually where it breaks</span></div>
+          <div class="chat-line"><span class="chat-handle h2">@jahnavi</span><span class="chat-msg">oh — didn't think about that, we were just copying what everyone else does</span></div>
+          <div class="chat-line"><span class="chat-handle h1">@vidur</span><span class="chat-msg">try a flat fee per campus instead, settled in real currency — same effort to build, and it survives contact with an actual finance team</span></div>
+          <div class="chat-line"><span class="chat-handle h2">@jahnavi</span><span class="chat-msg">okay, switching to that now</span></div>
+          <div class="chat-sys">Team Ganotri updated their approach <span class="ok" style="font-style:normal;">✓</span></div>
+          <div class="chat-sys">still on track for the next milestone <span class="caret"></span></div>
+        </div>
+        <div class="term-pane" data-pane="code">
+          <div class="term-line">Checking what Team Ganotri actually built <span class="muted">(not just what they said)</span></div>
+          <div class="term-line"><span class="v">42 updates</span> · <span class="v">6 people working on it</span> · <span class="v">18 hours in</span></div>
+          <div class="term-line"><span class="ok">✓</span> login &amp; sign-up really work — no shortcuts found</div>
+          <div class="term-line"><span class="warn">⚠</span> 2 screens are showing fake, placeholder data</div>
+          <div class="term-line"><span class="warn">⚠</span> the "loading" screen is just a timer, not a real process</div>
+          <div class="term-line"><span class="ok">✓</span> the rest of the app is genuinely built, not copy-pasted</div>
+          <div class="term-line">how much of this is real: <span class="v">78 out of 100</span> <span class="caret"></span></div>
+        </div>
+        <div class="term-pane" data-pane="score">
+          <div class="score-row"><div class="score-label">How real is the problem</div><div class="score-track"><div class="score-fill" style="width:88%"></div></div><div class="score-val">8.8</div></div>
+          <div class="score-row"><div class="score-label">How well it's built</div><div class="score-track"><div class="score-fill" style="width:74%"></div></div><div class="score-val">7.4</div></div>
+          <div class="score-row"><div class="score-label">Is it actually working</div><div class="score-track"><div class="score-fill" style="width:78%"></div></div><div class="score-val">7.8</div></div>
+          <div class="score-row"><div class="score-label">Impact if it succeeds</div><div class="score-track"><div class="score-fill" style="width:91%"></div></div><div class="score-val">9.1</div></div>
+          <div class="score-row"><div class="score-label">How fast the team moved</div><div class="score-track"><div class="score-fill" style="width:82%"></div></div><div class="score-val">8.2</div></div>
+          <div class="term-line" style="margin-top:18px;">ready to export for judges — no manual scoring needed <span class="caret"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="justify-content:center;">Core Capabilities</div>
+      <h2>Built for people who have to make the call.</h2>
+      <p>Four capabilities working together so mentors, judges, and administrators see the same ground truth.</p>
+    </div>
+    <div class="feature-grid reveal">
+      <div class="feature-card">
+        <div class="feature-icon">◈</div>
+        <div class="feature-num">01</div>
+        <h3>Failure-Aware Mentorship</h3>
+        <p>Every idea is checked against patterns behind real startup failures — not by industry label, but by the underlying mechanism that broke. Teams get warned before they build the same trap twice.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">◇</div>
+        <div class="feature-num">02</div>
+        <h3>Codebase Authenticity Audit</h3>
+        <p>A lightweight, sandboxed scan of the actual repository — commit history, endpoint behavior, mock data — turning "trust me, it works" into a verifiable build report.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">◆</div>
+        <div class="feature-num">03</div>
+        <h3>Configurable Evaluation Rubrics</h3>
+        <p>Organizers define the criteria that matter for their event — hackathon, corporate sprint, or academic showcase — and every team is scored against the same transparent bar.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">◎</div>
+        <div class="feature-num">04</div>
+        <h3>Post-Event Venture Synthesis</h3>
+        <p>The best ideas rarely come from one team. IdeationX surfaces complementary projects across a cohort and helps them merge into something worth continuing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="roi" id="roi">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="justify-content:center;">For Institutions</div>
+      <h2>Evaluation infrastructure your accreditation team will thank you for.</h2>
+      <p>Built to hold up under audit, not just under demo.</p>
+    </div>
+    <div class="roi-grid reveal">
+      <div class="roi-card">
+        <div class="roi-tag">Innovation Tracking</div>
+        <div class="roi-stat">TRL 1–4</div>
+        <h4>Automated pre-incubation tracking</h4>
+        <p>Every venture's progression is logged automatically, giving innovation cells a defensible record for national ranking submissions.</p>
+      </div>
+      <div class="roi-card">
+        <div class="roi-tag">Compliance</div>
+        <div class="roi-stat">Audit-Ready</div>
+        <h4>Documented innovation ecosystem</h4>
+        <p>Verifiable participation, mentorship, and outcome trails — structured for accreditation criteria around institutional innovation activity.</p>
+      </div>
+      <div class="roi-card">
+        <div class="roi-tag">Faculty Time</div>
+        <div class="roi-stat">90%↓</div>
+        <h4>Less manual screening</h4>
+        <p>Automated first-pass triage means faculty and judges spend their hours on the teams that clear the bar — not sorting the ones that don't.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="justify-content:center;">In Their Words</div>
+      <h2>What deployment partners are saying.</h2>
+    </div>
+    <div class="t-grid reveal">
+      <div class="t-feature">
+        <blockquote>I used IdeationX to pressure-test STEMQuest before submitting it to Apple's Swift Student Challenge — it caught assumptions in my build that I'd otherwise only have found out about from the judges, after it was too late to fix them.</blockquote>
+        <div class="t-attr">
+          <div class="t-avatar"></div>
+          <div>
+            <div class="t-name">Manas Malla</div>
+            <div class="t-role">Swift Student Challenge submission · builder of STEMQuest</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-side">
+        <div class="t-card">
+          <p>"Teams stopped trying to get past us with a good pitch and a broken build — IdeationX read the repo before they ever got to the mic."</p>
+          <div class="t-attr">
+            <div class="t-avatar small"></div>
+            <div>
+              <div class="t-name" style="font-size:.85rem;">Organizing Team</div>
+              <div class="t-role">TechSprint by Google Developer Student Clubs</div>
+            </div>
+          </div>
+        </div>
+        <div class="t-card">
+          <p>"The 2 AM mentorship was the real win — teams building for their own communities finally had someone to sanity-check ideas when we weren't around."</p>
+          <div class="t-attr">
+            <div class="t-avatar small"></div>
+            <div>
+              <div class="t-name" style="font-size:.85rem;">Organizing Team</div>
+              <div class="t-role">Code for Communities Hackathon</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="clients">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="justify-content:center;">Deployed Across</div>
+      <h2 style="font-size:1.3rem;">Institutions and events running on IdeationX</h2>
+    </div>
+    <div class="client-strip reveal">
+      <div class="client-cell">GLOBAL HACKATHON CIRCUITS</div>
+      <div class="client-cell">UNIVERSITY IIC CHAPTERS</div>
+      <div class="client-cell">STATE TECH FESTS</div>
+      <div class="client-cell">CORPORATE INNOVATION SPRINTS</div>
+      <div class="client-cell">PRE-INCUBATION HUBS</div>
+      <div class="client-cell">VENTURE DEVELOPMENT CENTRES</div>
+      <div class="client-cell">INDEPENDENT INNOVATORS</div>
+      <div class="client-cell">STUDENT INNOVATION COUNCILS</div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="justify-content:center;">Pricing</div>
+      <h2>Choose the tier that matches your cohort.</h2>
+      <p>Simple, transparent pricing — no negotiation theater.</p>
+    </div>
+
+    <div class="price-grid reveal">
+      <div class="price-card">
+        <div class="price-plan">Community &amp; Hackathons</div>
+        <div class="price-audience">Organizers · Tech Fests · Hackathon Circuits</div>
+        <div class="price-amount">$200 <span>/ event</span></div>
+        <div class="price-sub">+ $0.50 per participant</div>
+        <ul class="price-list">
+          <li>Up to 48h real-time AI mentorship</li>
+          <li>Codebase authenticity auditing</li>
+          <li>Mock &amp; stub fraud detection</li>
+          <li>Custom multi-tenant rubrics</li>
+        </ul>
+        <a href="#" class="price-cta">Talk to Sales</a>
+      </div>
+      <div class="price-card highlight">
+        <div class="price-plan">University Pre-Incubation</div>
+        <div class="price-audience">Colleges · VDCs · Innovation Cells</div>
+        <div class="price-amount">₹1,00,000 <span>/ year</span></div>
+        <div class="price-sub">+ $200 per active venture</div>
+        <ul class="price-list">
+          <li>Year-round TRL 1–4 venture tracking</li>
+          <li>Failure-pattern retrieval for mentorship</li>
+          <li>Accreditation-ready audit exports</li>
+          <li>Dedicated cloud &amp; API capacity</li>
+        </ul>
+        <a href="#" class="price-cta">Request Institutional Demo</a>
+      </div>
+      <div class="price-card">
+        <div class="price-plan">Independent Innovator</div>
+        <div class="price-audience">Student Founders · Indie Builders</div>
+        <div class="price-amount">$20 <span>/ month</span></div>
+        <div class="price-sub">Usage-tiered overflow</div>
+        <ul class="price-list">
+          <li>24/7 venture architecture copilot</li>
+          <li>1,700+ startup failure post-mortems</li>
+          <li>Local repository health scanner</li>
+          <li>Structured investor pitch exports</li>
+        </ul>
+        <a href="#" class="price-cta">Start Building</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="badges reveal">
+      <div class="badge">Zero-Code Storage</div>
+      <div class="badge">Sandboxed On-Device Auditing</div>
+      <div class="badge">Enterprise Cloud Isolation</div>
+    </div>
+    <div class="footer-grid">
+      <div class="brand"><span class="dot"></span>IdeationX</div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h5>Platform</h5>
+          <a href="#signal">Tri-Signal Engine</a>
+          <a href="#features">Capabilities</a>
+          <a href="#pricing">Pricing</a>
+        </div>
+        <div class="footer-col">
+          <h5>Institutions</h5>
+          <a href="#roi">Accreditation Fit</a>
+          <a href="#testimonials">Case Studies</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="#">Contact</a>
+          <a href="#">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 IdeationX. All rights reserved.</span>
+      <span>IdeationX • an initiative of the Ananta</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.tab').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      const target = tab.dataset.tab;
+      tab.parentElement.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      const body = tab.closest('.term').querySelector('.term-body');
+      body.querySelectorAll('.term-pane').forEach(p=>p.classList.remove('active'));
+      body.querySelector('[data-pane="'+target+'"]').classList.add('active');
+    });
+  });
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
