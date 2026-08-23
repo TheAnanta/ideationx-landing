@@ -5,7 +5,7 @@ const FEATURES = [
   { mark: "01", title: "Failure-Aware Mentorship", body: "Checked against the mechanisms behind real startup failures — not just the industry label." },
   { mark: "02", title: "Codebase Authenticity Audit", body: "A sandboxed scan turns \"trust me, it works\" into a verifiable build report." },
   { mark: "03", title: "Configurable Rubrics", body: "Organizers set the criteria. Every team is scored against the same transparent bar." },
-  { mark: "04", title: "Post-Event Venture Synthesis", body: "The best ideas rarely come from one team. IdeationX finds who should merge." },
+  { mark: "04", title: "Post-Event Venture Synthesis", body: "The best ideas rarely come from one team. IdeationX finds who should merge across a cohort into something worth continuing." },
 ];
 
 export default function Features() {

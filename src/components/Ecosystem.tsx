@@ -7,7 +7,7 @@ const ROLES = [
   { tag: "Builder", name: "Team or solo innovator", body: "A 24/7 copilot that flags bad assumptions before they get expensive." },
   { tag: "Mentor", name: "Vidur, the AI copilot", body: "Matches every decision against thousands of past failures, in real time." },
   { tag: "Organizer", name: "Whoever has to judge the work", body: "A scorecard built from what got shipped, not just what got pitched." },
-  { tag: "Institution", name: "The program behind it all", body: "An auditable record of the whole cohort — ready for accreditation." },
+  { tag: "Institution", name: "The program behind it all", body: "An auditable record of the whole cohort's progress — useful for accreditation, and for knowing which ventures are actually worth continuing." },
 ];
 
 export default function Ecosystem() {

@@ -23,7 +23,7 @@ const ITEMS = [
       </svg>
     ),
     title: "Demos lie, evaluators can't tell",
-    body: "Fake loaders and hardcoded data can win a 3-minute pitch.",
+    body: "Fake loaders and hardcoded data, dressed up as \"live,\" can win a 3-minute pitch — and hide a project that barely works, from a hackathon stage to an investor call.",
   },
   {
     icon: (
@@ -43,8 +43,8 @@ const ITEMS = [
         <path d="M27 12a11 11 0 0 1 0 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="1 5" />
       </svg>
     ),
-    title: "Building alone has no second opinion",
-    body: "Solo innovators compound bad assumptions for weeks before anyone points them out.",
+    title: "AI-backed doesn't mean mentored",
+    body: "Most innovators today lean on AI that's built to agree, not to find the loophole. And they rarely bring in a human — afraid sharing the idea means someone steals it.",
   },
 ];
 

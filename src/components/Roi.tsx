@@ -2,9 +2,24 @@ import { useReveal } from "../hooks/useReveal";
 import "./Roi.css";
 
 const STATS = [
-  { tag: "Innovation Tracking", stat: "TRL 1–4", title: "Automated pre-incubation tracking" },
-  { tag: "Compliance", stat: "Audit-Ready", title: "Documented innovation ecosystem" },
-  { tag: "Faculty Time", stat: "90%↓", title: "Less manual screening" },
+  {
+    tag: "Innovation Tracking",
+    stat: "TRL 1–4",
+    title: "Automated pre-incubation tracking",
+    body: "Every venture's progression is logged automatically, giving innovation cells a defensible record for national ranking submissions.",
+  },
+  {
+    tag: "Compliance",
+    stat: "Audit-Ready",
+    title: "Documented innovation ecosystem",
+    body: "Verifiable participation, mentorship, and outcome trails — structured for accreditation criteria around institutional innovation activity.",
+  },
+  {
+    tag: "Faculty Time",
+    stat: "90%↓",
+    title: "Less manual screening",
+    body: "Automated first-pass triage means faculty and judges spend their hours on the teams that clear the bar — not sorting the ones that don't.",
+  },
 ];
 
 export default function Roi() {
@@ -24,6 +39,7 @@ export default function Roi() {
               <div className="roi-tag">{s.tag}</div>
               <div className="roi-stat">{s.stat}</div>
               <h4>{s.title}</h4>
+              <p>{s.body}</p>
             </div>
           ))}
         </div>
