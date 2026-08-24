@@ -4,6 +4,7 @@ import "./Hero.css";
 export default function Hero() {
   return (
     <section className="hero" id="top">
+      <div className="hero-glow" aria-hidden="true" />
       <div className="wrap hero-inner">
         <div className="eyebrow">Built for builders, judged fairly</div>
         <h1>
@@ -27,12 +28,11 @@ export default function Hero() {
       </div>
 
       <div className="hero-stage">
-        <div className="stage-glow" aria-hidden="true" />
         <div className="stage-duo">
           <img src={heroDuo} alt="Jahnavi showing her work to Vidur, the IdeationX AI mentor" />
           <div className="chip chip-jahnavi">
             <span className="chip-label">@jahnavi</span>
-            <span className="chip-sub">Team Ganotri</span>
+            <span className="chip-sub">Project Gangotri</span>
           </div>
           <div className="chip chip-vidur">
             <span className="chip-label">@vidur</span>

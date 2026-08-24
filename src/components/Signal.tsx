@@ -50,7 +50,7 @@ export default function Signal() {
           <div className="panel-body">
             {tab === "chat" && (
               <div className="chat-pane">
-                <div className="chat-note">Vidur is following Team Ganotri's build channel</div>
+                <div className="chat-note">Vidur is following Project Gangotri's build channel</div>
                 <Msg avatar={jahnaviAvatar} name="@jahnavi" side="left">
                   thinking we charge per seat for the college version — keeps it simple to build
                 </Msg>
@@ -60,7 +60,7 @@ export default function Signal() {
                 <Msg avatar={jahnaviAvatar} name="@jahnavi" side="left">
                   oh — switching to that now, thanks
                 </Msg>
-                <div className="chat-note ok">✓ Team Ganotri updated their approach · still on pace</div>
+                <div className="chat-note ok">✓ Project Gangotri updated their approach · still on pace</div>
               </div>
             )}
 

@@ -41,14 +41,14 @@
   justify-content: center;
 }
 
-.stage-glow {
+.hero-glow {
   position: absolute;
-  inset: -10% -10% 0;
-  background: radial-gradient(560px 380px at 30% 20%, var(--coral-tint), transparent 70%),
-    radial-gradient(560px 380px at 72% 30%, var(--olive-tint), transparent 70%),
-    radial-gradient(400px 260px at 50% 60%, var(--gold-tint), transparent 75%);
+  inset: 0;
+  background: radial-gradient(560px 420px at 28% 78%, var(--coral-tint), transparent 70%),
+    radial-gradient(560px 420px at 74% 82%, var(--olive-tint), transparent 70%),
+    radial-gradient(420px 300px at 50% 94%, var(--gold-tint), transparent 75%);
   filter: blur(6px);
-  z-index: 0;
+  z-index: -1;
 }
 
 .stage-duo {

@@ -30,7 +30,7 @@ export default function Ecosystem() {
               thinking we charge per seat — keeps it simple to build
             </div>
             <img src={jahnaviThink} alt="Jahnavi, reconsidering" />
-            <span className="scene-name">@jahnavi · Team Ganotri</span>
+            <span className="scene-name">@jahnavi · Project Gangotri</span>
           </div>
           <div className="scene-person right">
             <div className="bubble bubble-right">
