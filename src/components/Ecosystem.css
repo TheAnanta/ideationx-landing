@@ -41,7 +41,7 @@
 }
 
 .blob-coral {
-  width: 150%;
+  width: 137%;
   background: linear-gradient(
     160deg,
     color-mix(in srgb, var(--coral) 46%, var(--surface)),
