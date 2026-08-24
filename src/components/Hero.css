@@ -52,44 +52,22 @@
   z-index: 0;
 }
 
-.stage-figures {
+.stage-duo {
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 0;
   max-width: 640px;
   width: 100%;
 }
 
-.figure {
-  position: relative;
-  width: 42%;
-  max-width: 260px;
-}
-
-.figure img {
+.stage-duo img {
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 30px 40px rgba(36, 21, 17, 0.18));
-}
-
-.figure-vidur img {
-  transform: scaleX(-1);
-}
-
-.speech-link {
-  width: 16%;
-  max-width: 120px;
-  align-self: center;
-  margin-bottom: 34%;
-  opacity: 0.7;
+  filter: drop-shadow(0 30px 40px rgba(36, 21, 17, 0.16));
 }
 
 .chip {
   position: absolute;
-  bottom: 14%;
+  bottom: 6%;
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -112,14 +90,14 @@
 }
 
 .chip-jahnavi {
-  left: -8px;
+  left: 2%;
 }
 .chip-jahnavi .chip-label {
   color: var(--coral-deep);
 }
 
 .chip-vidur {
-  right: -8px;
+  right: 2%;
 }
 .chip-vidur .chip-label {
   color: var(--olive-deep);
@@ -129,22 +107,14 @@
   .hero {
     padding-top: 120px;
   }
-  .figure {
-    width: 44%;
-  }
-  .speech-link {
-    display: none;
-  }
-  .stage-figures {
-    gap: 6px;
-  }
   .chip {
     padding: 7px 10px;
+    bottom: 2%;
   }
   .chip-label {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
   }
   .chip-sub {
-    font-size: 0.6rem;
+    font-size: 0.58rem;
   }
 }

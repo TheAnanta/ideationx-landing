@@ -8,6 +8,7 @@ import Roi from "./components/Roi";
 import Testimonials from "./components/Testimonials";
 import Clients from "./components/Clients";
 import Pricing from "./components/Pricing";
+import Closer from "./components/Closer";
 import Footer from "./components/Footer";
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
       <Testimonials />
       <Clients />
       <Pricing />
+      <Closer />
       <Footer />
     </>
   );

@@ -1,5 +1,4 @@
-import jahnavi from "../assets/jahnavi.webp";
-import vidur from "../assets/vidur.webp";
+import heroDuo from "../assets/hero-duo.webp";
 import "./Hero.css";
 
 export default function Hero() {
@@ -29,25 +28,15 @@ export default function Hero() {
 
       <div className="hero-stage">
         <div className="stage-glow" aria-hidden="true" />
-        <div className="stage-figures">
-          <div className="figure figure-jahnavi">
-            <img src={jahnavi} alt="Jahnavi, a founder building with IdeationX" />
-            <div className="chip chip-jahnavi">
-              <span className="chip-label">@jahnavi</span>
-              <span className="chip-sub">Team Ganotri</span>
-            </div>
+        <div className="stage-duo">
+          <img src={heroDuo} alt="Jahnavi showing her work to Vidur, the IdeationX AI mentor" />
+          <div className="chip chip-jahnavi">
+            <span className="chip-label">@jahnavi</span>
+            <span className="chip-sub">Team Ganotri</span>
           </div>
-          <div className="speech-link" aria-hidden="true">
-            <svg viewBox="0 0 120 40" fill="none">
-              <path d="M4 20c20-14 40-14 60 0s40 14 52 0" stroke="var(--line-strong)" strokeWidth="2" strokeDasharray="2 8" strokeLinecap="round" />
-            </svg>
-          </div>
-          <div className="figure figure-vidur">
-            <img src={vidur} alt="Vidur, the IdeationX AI mentor" />
-            <div className="chip chip-vidur">
-              <span className="chip-label">@vidur</span>
-              <span className="chip-sub">AI Mentor</span>
-            </div>
+          <div className="chip chip-vidur">
+            <span className="chip-label">@vidur</span>
+            <span className="chip-sub">AI Mentor</span>
           </div>
         </div>
       </div>

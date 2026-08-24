@@ -1,6 +1,6 @@
 import { useState } from "react";
-import jahnavi from "../assets/jahnavi.webp";
-import vidur from "../assets/vidur.webp";
+import jahnaviAvatar from "../assets/jahnavi-avatar.webp";
+import vidurAvatar from "../assets/vidur-avatar.webp";
 import { useReveal } from "../hooks/useReveal";
 import "./Signal.css";
 
@@ -51,13 +51,13 @@ export default function Signal() {
             {tab === "chat" && (
               <div className="chat-pane">
                 <div className="chat-note">Vidur is following Team Ganotri's build channel</div>
-                <Msg avatar={jahnavi} name="@jahnavi" side="left">
+                <Msg avatar={jahnaviAvatar} name="@jahnavi" side="left">
                   thinking we charge per seat for the college version — keeps it simple to build
                 </Msg>
-                <Msg avatar={vidur} name="@vidur" side="right">
+                <Msg avatar={vidurAvatar} name="@vidur" side="right">
                   heads up — this shape has sunk a few campus tools before. try a flat fee instead
                 </Msg>
-                <Msg avatar={jahnavi} name="@jahnavi" side="left">
+                <Msg avatar={jahnaviAvatar} name="@jahnavi" side="left">
                   oh — switching to that now, thanks
                 </Msg>
                 <div className="chat-note ok">✓ Team Ganotri updated their approach · still on pace</div>
@@ -118,7 +118,7 @@ function Msg({
 }) {
   return (
     <div className={`msg msg-${side}`}>
-      <div className="msg-avatar" style={{ backgroundImage: `url(${avatar})` }} />
+      <img className="msg-avatar" src={avatar} alt="" />
       <div className="msg-body">
         <div className="msg-name">{name}</div>
         <div className="msg-text">{children}</div>

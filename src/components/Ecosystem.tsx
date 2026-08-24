@@ -1,5 +1,5 @@
-import jahnavi from "../assets/jahnavi.webp";
-import vidur from "../assets/vidur.webp";
+import jahnaviThink from "../assets/jahnavi-think.webp";
+import vidurExplain from "../assets/vidur-explain.webp";
 import { useReveal } from "../hooks/useReveal";
 import "./Ecosystem.css";
 
@@ -29,14 +29,14 @@ export default function Ecosystem() {
             <div className="bubble bubble-left">
               thinking we charge per seat — keeps it simple to build
             </div>
-            <img src={jahnavi} alt="Jahnavi" />
+            <img src={jahnaviThink} alt="Jahnavi, reconsidering" />
             <span className="scene-name">@jahnavi · Team Ganotri</span>
           </div>
           <div className="scene-person right">
             <div className="bubble bubble-right">
               this shape has sunk a few teams before — try a flat fee instead
             </div>
-            <img src={vidur} alt="Vidur" className="mirrored" />
+            <img src={vidurExplain} alt="Vidur, explaining a suggestion" />
             <span className="scene-name">@vidur · AI Mentor</span>
           </div>
         </div>
