@@ -23,6 +23,15 @@
   align-items: center;
 }
 
+.scene-person.left {
+  transform: scale(1.1);
+  transform-origin: bottom center;
+}
+
+.scene-person.right {
+  transform: translateY(36px);
+}
+
 .figure-wrap {
   position: relative;
   display: flex;
