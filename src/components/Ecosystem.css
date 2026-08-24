@@ -23,15 +23,49 @@
   align-items: center;
 }
 
+.figure-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.blob {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  width: 104%;
+  aspect-ratio: 1 / 0.92;
+  transform: translateX(-50%);
+  border-radius: 48% 52% 54% 46% / 58% 44% 56% 42%;
+  z-index: 0;
+}
+
+.blob-coral {
+  width: 150%;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--coral) 46%, var(--surface)),
+    color-mix(in srgb, var(--gold) 38%, var(--surface))
+  );
+}
+
+.blob-olive {
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--olive) 46%, var(--surface)),
+    color-mix(in srgb, var(--gold) 38%, var(--surface))
+  );
+}
+
 .scene-person img {
   position: relative;
   z-index: 1;
-  height: clamp(190px, 26vw, 300px);
+  height: clamp(240px, 34vw, 400px);
   width: auto;
   max-width: 100%;
   filter: drop-shadow(0 14px 16px rgba(36, 21, 17, 0.1));
-  -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 97%);
-  mask-image: linear-gradient(to bottom, black 78%, transparent 97%);
+  -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 99%);
+  mask-image: linear-gradient(to bottom, black 88%, transparent 99%);
 }
 
 .scene-person img.mirrored {

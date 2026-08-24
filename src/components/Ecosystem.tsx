@@ -29,14 +29,20 @@ export default function Ecosystem() {
             <div className="bubble bubble-left">
               thinking we charge per seat — keeps it simple to build
             </div>
-            <img src={jahnaviThink} alt="Jahnavi, reconsidering" />
+            <div className="figure-wrap">
+              <div className="blob blob-coral" aria-hidden="true" />
+              <img src={jahnaviThink} alt="Jahnavi, reconsidering" />
+            </div>
             <span className="scene-name">@jahnavi · Project Gangotri</span>
           </div>
           <div className="scene-person right">
             <div className="bubble bubble-right">
               this shape has sunk a few teams before — try a flat fee instead
             </div>
-            <img src={vidurExplain} alt="Vidur, explaining a suggestion" />
+            <div className="figure-wrap">
+              <div className="blob blob-olive" aria-hidden="true" />
+              <img src={vidurExplain} alt="Vidur, explaining a suggestion" />
+            </div>
             <span className="scene-name">@vidur · AI Mentor</span>
           </div>
         </div>
