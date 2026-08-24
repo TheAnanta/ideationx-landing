@@ -25,8 +25,12 @@
 }
 
 .scene-person img {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  filter: drop-shadow(0 22px 30px rgba(36, 21, 17, 0.16));
+  filter: drop-shadow(0 14px 16px rgba(36, 21, 17, 0.1));
+  -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 97%);
+  mask-image: linear-gradient(to bottom, black 78%, transparent 97%);
 }
 
 .scene-person img.mirrored {
