@@ -14,10 +14,7 @@ export default function Closer() {
             Request a Demo →
           </a>
         </div>
-        <div className="closer-figure">
-          <div className="closer-blob" aria-hidden="true" />
-          <img src={footerDuo} alt="Jahnavi and Vidur celebrating" className="closer-img" />
-        </div>
+        <img src={footerDuo} alt="Jahnavi and Vidur celebrating" className="closer-img" />
       </div>
     </section>
   );
