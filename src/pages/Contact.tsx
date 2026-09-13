@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "../lib/firebase";
 import PageShell from "../components/PageShell";
 import "../components/Forms.css";
 
@@ -12,22 +14,32 @@ export default function Contact() {
   const [params] = useSearchParams();
   const plan = params.get("plan") ?? "";
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const form = new FormData(e.currentTarget);
+    setError("");
+    const form = e.currentTarget;
+    const data = new FormData(form);
     const entry = {
-      name: form.get("name"),
-      email: form.get("email"),
-      org: form.get("org"),
-      plan: plan || form.get("interest"),
-      message: form.get("message"),
-      submittedAt: new Date().toISOString(),
+      name: data.get("name"),
+      email: data.get("email"),
+      org: data.get("org"),
+      plan: plan || data.get("interest"),
+      message: data.get("message"),
+      submittedAt: serverTimestamp(),
     };
-    const existing = JSON.parse(localStorage.getItem("ideationx_contact_submissions") || "[]");
-    existing.push(entry);
-    localStorage.setItem("ideationx_contact_submissions", JSON.stringify(existing));
-    setSent(true);
+
+    setSubmitting(true);
+    try {
+      await addDoc(collection(db, "contact_submissions"), entry);
+      setSent(true);
+    } catch {
+      setError("Something went wrong sending that — please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -36,11 +48,10 @@ export default function Contact() {
         {sent ? (
           <div className="success-card">
             <div className="success-icon">✓</div>
-            <h1 className="form-title">Message saved</h1>
+            <h1 className="form-title">Message sent</h1>
             <p className="form-sub">
               Thanks for reaching out — someone from the team will follow up by email shortly.
             </p>
-            <span className="mock-tag">Mock submission · saved locally, not sent anywhere</span>
           </div>
         ) : (
           <>
@@ -81,10 +92,11 @@ export default function Contact() {
                   <textarea id="message" name="message" placeholder="A bit about your cohort, event, or program" />
                 </div>
               </div>
-              <button type="submit" className="btn btn-primary form-submit">
-                Send message
+              <button type="submit" className="btn btn-primary form-submit" disabled={submitting}>
+                {submitting ? "Sending…" : "Send message"}
               </button>
-              <p className="form-note">This is a demo form — nothing is emailed or shared.</p>
+              {error && <p className="form-note form-error">{error}</p>}
+              <p className="form-note">Your message goes straight to our team — we'll reply by email.</p>
             </form>
           </>
         )}

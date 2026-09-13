@@ -18,6 +18,7 @@ const PLANS = [
     cta: "Talk to Sales",
     href: "/contact?plan=hackathons",
     highlight: false,
+    disabled: false,
   },
   {
     plan: "University Pre-Incubation",
@@ -34,6 +35,7 @@ const PLANS = [
     cta: "Request Institutional Demo",
     href: "/contact?plan=university",
     highlight: true,
+    disabled: false,
   },
   {
     plan: "Independent Innovator",
@@ -47,9 +49,11 @@ const PLANS = [
       "Local repository health scanner",
       "Structured investor pitch exports",
     ],
-    cta: "Start Building",
-    href: "/login",
+    cta: "Coming Soon",
+    // href: "/login" — re-enable once the Independent Innovator signup flow is ready
+    href: "",
     highlight: false,
+    disabled: true,
   },
 ];
 
@@ -79,9 +83,15 @@ export default function Pricing() {
                   <li key={f}>{f}</li>
                 ))}
               </ul>
-              <Link to={p.href} className="price-cta">
-                {p.cta}
-              </Link>
+              {p.disabled ? (
+                <span className="price-cta disabled" aria-disabled="true">
+                  {p.cta}
+                </span>
+              ) : (
+                <Link to={p.href} className="price-cta">
+                  {p.cta}
+                </Link>
+              )}
             </div>
           ))}
         </div>

@@ -89,6 +89,11 @@
   text-align: center;
 }
 
+.form-error {
+  color: var(--coral-deep);
+  font-weight: 600;
+}
+
 .success-card {
   text-align: center;
 }

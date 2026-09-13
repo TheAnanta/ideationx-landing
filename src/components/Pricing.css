@@ -121,6 +121,12 @@
   border-color: var(--coral);
 }
 
+.price-cta.disabled {
+  color: var(--ink-faint);
+  cursor: not-allowed;
+  background: var(--bg-alt);
+}
+
 @media (max-width: 900px) {
   .price-grid {
     grid-template-columns: 1fr;
