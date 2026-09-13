@@ -8,8 +8,8 @@
 .shell-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(560px 420px at 20% 0%, var(--coral-tint), transparent 65%),
-    radial-gradient(560px 420px at 85% 30%, var(--olive-tint), transparent 65%);
+  background: radial-gradient(560px 420px at 20% 0%, color-mix(in srgb, var(--coral) 22%, transparent), transparent 65%),
+    radial-gradient(560px 420px at 85% 30%, color-mix(in srgb, var(--olive) 20%, transparent), transparent 65%);
   filter: blur(6px);
   z-index: 0;
 }

@@ -34,10 +34,12 @@
 .field-row {
   display: flex;
   gap: 12px;
+  min-width: 0;
 }
 
 .field-row .field {
   flex: 1;
+  min-width: 0;
 }
 
 .field label {
