@@ -6,6 +6,8 @@
 }
 
 .t-hero {
+  position: relative;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: 42px;
@@ -14,7 +16,20 @@
   margin-top: 52px;
 }
 
+.t-hero-badge {
+  position: absolute;
+  top: -54px;
+  right: -54px;
+  width: 190px;
+  height: 190px;
+  opacity: 0.16;
+  pointer-events: none;
+  filter: saturate(0.6);
+}
+
 .t-hero blockquote {
+  position: relative;
+  z-index: 1;
   margin: 0;
   font-family: var(--display);
   font-size: 1.36rem;
@@ -22,6 +37,11 @@
   font-weight: 500;
   color: var(--ink);
   max-width: 760px;
+}
+
+.t-hero .t-attr {
+  position: relative;
+  z-index: 1;
 }
 
 .t-grid {
@@ -63,21 +83,20 @@
   height: 42px;
   border-radius: 50%;
   flex-shrink: 0;
-  background: linear-gradient(135deg, var(--coral), var(--gold));
-  color: #fff8f2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  font-weight: 700;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  background: var(--bg-alt);
 }
 
 .t-avatar.small {
   width: 32px;
   height: 32px;
-  font-size: 0.68rem;
-  background: linear-gradient(135deg, var(--olive), var(--olive-deep));
+}
+
+.t-avatar.logo {
+  object-fit: contain;
+  padding: 5px;
+  background: #fff;
 }
 
 .t-name {
@@ -121,5 +140,11 @@
 @media (max-width: 900px) {
   .t-grid {
     grid-template-columns: 1fr;
+  }
+  .t-hero-badge {
+    width: 130px;
+    height: 130px;
+    top: -36px;
+    right: -36px;
   }
 }

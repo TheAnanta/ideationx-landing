@@ -1,3 +1,8 @@
+import avatarVikas from "../assets/avatar-vikas.webp";
+import avatarManas from "../assets/avatar-manas.webp";
+import avatarKavya from "../assets/avatar-kavya.webp";
+import avatarCfc from "../assets/avatar-cfc.webp";
+import badgeSih from "../assets/badge-sih.webp";
 import { useReveal } from "../hooks/useReveal";
 import "./Testimonials.css";
 
@@ -14,6 +19,7 @@ export default function Testimonials() {
         </div>
 
         <div className="t-hero reveal" ref={ref}>
+          <img className="t-hero-badge" src={badgeSih} alt="" aria-hidden="true" />
           <blockquote>
             We ran our internal Smart India Hackathon round with 250+ teams and nowhere
             near enough mentors to go around. IdeationX ended up being the mentor we
@@ -25,7 +31,7 @@ export default function Testimonials() {
             the model had been trained on our rubric.
           </blockquote>
           <div className="t-attr">
-            <div className="t-avatar">VS</div>
+            <img className="t-avatar" src={avatarVikas} alt="" />
             <div>
               <div className="t-name">Dr. Vikas Srivatsav</div>
               <div className="t-role">Deputy Director, Venture Development Centre</div>
@@ -41,7 +47,7 @@ export default function Testimonials() {
               only have found out about from the judges, after it was too late to fix them.
             </blockquote>
             <div className="t-attr">
-              <div className="t-avatar">MM</div>
+              <img className="t-avatar" src={avatarManas} alt="" />
               <div>
                 <div className="t-name">Manas Malla</div>
                 <div className="t-role">Swift Student Challenge · builder of STEMQuest</div>
@@ -55,7 +61,7 @@ export default function Testimonials() {
                 build — IdeationX read the repo before they got to the mic."
               </p>
               <div className="t-attr">
-                <div className="t-avatar small">KC</div>
+                <img className="t-avatar small" src={avatarKavya} alt="" />
                 <div>
                   <div className="t-name small">Ms. Kavya Chandana</div>
                   <div className="t-role">Organizer, TechSprint by Google Developer Student Clubs</div>
@@ -68,7 +74,7 @@ export default function Testimonials() {
                 communities finally had someone to sanity-check ideas when we weren't around."
               </p>
               <div className="t-attr">
-                <div className="t-avatar small">CC</div>
+                <img className="t-avatar small logo" src={avatarCfc} alt="" />
                 <div>
                   <div className="t-name small">Organizing Team</div>
                   <div className="t-role">Code for Communities Hackathon</div>
