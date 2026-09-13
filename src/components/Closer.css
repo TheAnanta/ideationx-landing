@@ -1,61 +1,70 @@
 .closer {
-  padding: 90px 0 50px;
+  padding: 100px 0 60px;
 }
 
 .closer-inner {
-  border-radius: 24px;
-  background: var(--bg-alt);
-  border: 1px solid var(--line);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 48px 56px 0 56px;
-  overflow: hidden;
+  text-align: center;
 }
 
 .closer-text {
-  max-width: 380px;
-  padding-bottom: 48px;
+  max-width: 480px;
 }
 
 .closer-text h2 {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-size: clamp(1.7rem, 3.4vw, 2.4rem);
   line-height: 1.14;
 }
 
 .closer-text p {
   margin-top: 14px;
-  font-size: 0.98rem;
+  font-size: 1rem;
 }
 
 .closer-text .btn {
   margin-top: 26px;
 }
 
+.closer-figure {
+  position: relative;
+  margin-top: 44px;
+  display: flex;
+  justify-content: center;
+}
+
+.closer-blob {
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  width: 92%;
+  aspect-ratio: 1 / 0.85;
+  transform: translateX(-50%);
+  border-radius: 46% 54% 52% 48% / 56% 42% 58% 44%;
+  background: linear-gradient(
+    155deg,
+    color-mix(in srgb, var(--coral) 26%, var(--surface)),
+    color-mix(in srgb, var(--olive) 26%, var(--surface))
+  );
+  z-index: 0;
+}
+
 .closer-img {
+  position: relative;
+  z-index: 1;
   width: 340px;
-  max-width: 42%;
+  max-width: 60vw;
   height: auto;
-  align-self: flex-end;
   filter: drop-shadow(0 26px 34px rgba(36, 21, 17, 0.18));
 }
 
 @media (max-width: 760px) {
-  .closer-inner {
-    flex-direction: column;
-    text-align: center;
-    padding: 40px 28px 0;
-  }
-  .closer-text {
-    max-width: none;
-    padding-bottom: 0;
-  }
-  .closer-text .btn {
-    margin-bottom: 8px;
+  .closer {
+    padding: 80px 0 50px;
   }
   .closer-img {
-    max-width: 62%;
-    margin-top: 8px;
+    width: 280px;
+    max-width: 72vw;
   }
 }

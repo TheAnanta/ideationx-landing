@@ -97,3 +97,15 @@ footer .brand-dot {
   font-size: 0.8rem;
   color: var(--ink-faint);
 }
+
+.footer-ananta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.ananta-mark {
+  height: 13px;
+  width: auto;
+  color: var(--ink-faint);
+}

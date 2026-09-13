@@ -1,0 +1,52 @@
+.shell {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.shell-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(560px 420px at 20% 0%, var(--coral-tint), transparent 65%),
+    radial-gradient(560px 420px at 85% 30%, var(--olive-tint), transparent 65%);
+  filter: blur(6px);
+  z-index: 0;
+}
+
+.shell-nav {
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid var(--line);
+}
+
+.shell-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+}
+
+.shell-back {
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.shell-back:hover {
+  color: var(--ink);
+}
+
+.shell-main {
+  position: relative;
+  z-index: 1;
+  padding: 64px 24px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shell-main.narrow {
+  max-width: 460px;
+  margin: 0 auto;
+}

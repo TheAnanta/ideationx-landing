@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useReveal } from "../hooks/useReveal";
 import "./Pricing.css";
 
@@ -15,6 +16,7 @@ const PLANS = [
       "Custom multi-tenant rubrics",
     ],
     cta: "Talk to Sales",
+    href: "/contact?plan=hackathons",
     highlight: false,
   },
   {
@@ -30,6 +32,7 @@ const PLANS = [
       "Dedicated cloud & API capacity",
     ],
     cta: "Request Institutional Demo",
+    href: "/contact?plan=university",
     highlight: true,
   },
   {
@@ -45,6 +48,7 @@ const PLANS = [
       "Structured investor pitch exports",
     ],
     cta: "Start Building",
+    href: "/login",
     highlight: false,
   },
 ];
@@ -75,9 +79,9 @@ export default function Pricing() {
                   <li key={f}>{f}</li>
                 ))}
               </ul>
-              <a href="#" className="price-cta">
+              <Link to={p.href} className="price-cta">
                 {p.cta}
-              </a>
+              </Link>
             </div>
           ))}
         </div>

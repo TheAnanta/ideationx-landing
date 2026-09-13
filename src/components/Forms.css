@@ -1,0 +1,148 @@
+.form-card {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 36px 32px;
+  box-shadow: var(--shadow-soft);
+}
+
+.form-title {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.form-sub {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 0.92rem;
+}
+
+.field-group {
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-row {
+  display: flex;
+  gap: 12px;
+}
+
+.field-row .field {
+  flex: 1;
+}
+
+.field label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.field input,
+.field select,
+.field textarea {
+  font-family: var(--sans);
+  font-size: 0.94rem;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  padding: 11px 13px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 96px;
+  font-family: var(--sans);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--coral);
+  box-shadow: 0 0 0 3px var(--coral-tint);
+}
+
+.form-submit {
+  margin-top: 28px;
+  width: 100%;
+  justify-content: center;
+  border: none;
+}
+
+.form-note {
+  margin-top: 16px;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  text-align: center;
+}
+
+.success-card {
+  text-align: center;
+}
+
+.success-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--olive-tint);
+  color: var(--olive-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  font-size: 1.4rem;
+}
+
+.plan-summary {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 20px;
+  background: var(--bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.plan-summary-name {
+  font-family: var(--display);
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.plan-summary-sub {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  margin-top: 2px;
+}
+
+.plan-summary-price {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--coral-deep);
+}
+
+.mock-tag {
+  display: inline-block;
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border: 1px dashed var(--line-strong);
+  border-radius: 100px;
+  padding: 5px 12px;
+}

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import AnantaLogo from "./AnantaLogo";
 import "./Footer.css";
 
 const BADGES = ["Zero-Code Storage", "Sandboxed On-Device Auditing", "Enterprise Cloud Isolation"];
@@ -20,10 +22,7 @@ const COLUMNS = [
   },
   {
     title: "Company",
-    links: [
-      { label: "Contact", href: "#" },
-      { label: "Careers", href: "#" },
-    ],
+    links: [{ label: "Contact", href: "/contact" }],
   },
 ];
 
@@ -47,18 +46,26 @@ export default function Footer() {
             {COLUMNS.map((col) => (
               <div className="footer-col" key={col.title}>
                 <h5>{col.title}</h5>
-                {col.links.map((l) => (
-                  <a key={l.label} href={l.href}>
-                    {l.label}
-                  </a>
-                ))}
+                {col.links.map((l) =>
+                  l.href.startsWith("#") ? (
+                    <a key={l.label} href={l.href}>
+                      {l.label}
+                    </a>
+                  ) : (
+                    <Link key={l.label} to={l.href}>
+                      {l.label}
+                    </Link>
+                  )
+                )}
               </div>
             ))}
           </div>
         </div>
         <div className="footer-bottom">
           <span>© 2026 IdeationX. All rights reserved.</span>
-          <span>IdeationX • an initiative of the Ananta</span>
+          <span className="footer-ananta">
+            IdeationX • an initiative of <AnantaLogo className="ananta-mark" />
+          </span>
         </div>
       </div>
     </footer>
