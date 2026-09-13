@@ -1,6 +1,7 @@
 import Nav from "../components/Nav";
 import Hero from "../components/Hero";
 import Problem from "../components/Problem";
+import ValueProps from "../components/ValueProps";
 import Ecosystem from "../components/Ecosystem";
 import Signal from "../components/Signal";
 import Features from "../components/Features";
@@ -17,6 +18,7 @@ export default function Landing() {
       <Nav />
       <Hero />
       <Problem />
+      <ValueProps />
       <Ecosystem />
       <Signal />
       <Features />

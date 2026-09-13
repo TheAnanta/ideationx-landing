@@ -3,6 +3,7 @@ import "./Nav.css";
 
 const LINKS = [
   { href: "#problem", label: "Why IdeationX" },
+  { href: "#value", label: "For You" },
   { href: "#ecosystem", label: "Ecosystem" },
   { href: "#signal", label: "Platform" },
   { href: "#testimonials", label: "Stories" },
