@@ -3,6 +3,7 @@ import avatarManas from "../assets/avatar-manas.webp";
 import avatarKavya from "../assets/avatar-kavya.webp";
 import avatarCfc from "../assets/avatar-cfc.webp";
 import badgeSih from "../assets/badge-sih.webp";
+import badgeSsc from "../assets/badge-ssc.webp";
 import { useReveal } from "../hooks/useReveal";
 import "./Testimonials.css";
 
@@ -41,6 +42,7 @@ export default function Testimonials() {
 
         <div className="t-grid">
           <div className="t-feature">
+            <img className="t-feature-badge" src={badgeSsc} alt="" aria-hidden="true" />
             <blockquote>
               I used IdeationX to pressure-test STEMQuest before submitting it to Apple's
               Swift Student Challenge — it caught assumptions in my build I'd otherwise
